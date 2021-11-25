@@ -1,10 +1,12 @@
 package pl.edu.pj.mpr.tripevaluator;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/review")
@@ -30,5 +32,20 @@ public class TripEvaluatorController {
     public ResponseEntity<List<Trip>> findAll() {
         return ResponseEntity.ok(tripEvaluatorService.findAllTrips());
     }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<Optional<Trip>> findById(@PathVariable int id) {
+        return ResponseEntity.ok(tripEvaluatorService.findById(id));
+    }
+    @PutMapping("/addReview")
+    public ResponseEntity<Trip> addReview(@RequestBody TripPojo tripPojo) {
+        return ResponseEntity.ok(tripEvaluatorService.addReviev(tripPojo));
+    }
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void deleteTrip(@PathVariable int id) {
+        tripEvaluatorService.deleteTrip(id);
+    }
+
 
 }

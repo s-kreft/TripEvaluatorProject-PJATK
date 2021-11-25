@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TripEvaluatorService {
@@ -33,6 +34,19 @@ public class TripEvaluatorService {
     }
     public List<Trip> findAllTrips() {
         return repository.findAll();
+    }
+    public Optional<Trip> findById(int id) {
+        return repository.findById(id);
+    }
+    public Trip addReviev(TripPojo tripPojo) {
+        Optional<Trip> optionalTrip = repository.findById(tripPojo.getId());
+        Trip trip = optionalTrip.get();
+        trip.getReviewList().add(tripPojo.getReview());
+
+        return repository.save(trip);
+    }
+    public void deleteTrip(int id) {
+        repository.deleteById(id);
     }
 
 
