@@ -17,14 +17,15 @@ public class Trip {
     private LocalDate departureDate;
     private TransportType transportType;
 
-    public Trip() {}
+    public Trip() {
+    }
 
     public Trip(int id, String title, String destination, List reviewList, double price, LocalDate departureDate,
-    TransportType transportType) {
-        this.id=id;
-        this.title =title;
-        this.destination =destination;
-        this.reviewList=reviewList;
+                TransportType transportType) {
+        this.id = id;
+        this.title = title;
+        this.destination = destination;
+        this.reviewList = reviewList;
         this.price = price;
         this.departureDate = departureDate;
         this.transportType = transportType;
@@ -86,4 +87,6 @@ public class Trip {
     public void setTransportType(TransportType transportType) {
         this.transportType = transportType;
     }
+
+
 }

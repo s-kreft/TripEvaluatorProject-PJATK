@@ -42,7 +42,7 @@ public class TripEvaluatorController {
         return ResponseEntity.ok(tripEvaluatorService.addReviev(tripPojo));
     }
     @DeleteMapping("/delete/{id}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT) // HttpStatus 204
     public void deleteTrip(@PathVariable int id) {
         tripEvaluatorService.deleteTrip(id);
     }

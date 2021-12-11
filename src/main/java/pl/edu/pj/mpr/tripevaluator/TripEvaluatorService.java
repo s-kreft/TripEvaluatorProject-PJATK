@@ -49,5 +49,37 @@ public class TripEvaluatorService {
         repository.deleteById(id);
     }
 
-
+    public void addSuffixToTrip(Trip trip) {
+        if (trip.getTitle() == null || trip.getTitle().isBlank()) {
+            trip.setTitle("EMPTY");
+        } else {
+            trip.setTitle(trip.getTitle() + "_SUFFIX");
+        }
+    }
+    public boolean isFullTrip(Trip trip) {
+        return trip.getReviewList().size() > 10;
+    }
+    public void addReviewWithoutSave(Trip trip, Review review) {
+        if(trip.getReviewList() != null) {
+            trip.getReviewList().add(review);
+        }
+    }
+    public boolean isExpensive(Trip trip) {
+        if(trip.getPrice() > 2000) {
+            return true;
+        }
+        return false;
+    }
+    public boolean isDeparted(Trip trip) {
+        if(trip.getDepartureDate().isBefore(LocalDate.now())) {
+            return true;
+        }
+        return false;
+    }
+    public boolean hasReviews(Trip trip) {
+        if(trip.getReviewList() != null && trip.getReviewList().size() > 0) {
+            return true;
+        }
+        return false;
+    }
 }
