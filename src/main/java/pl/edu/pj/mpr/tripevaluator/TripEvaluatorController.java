@@ -15,6 +15,10 @@ public class TripEvaluatorController {
     public TripEvaluatorController(TripEvaluatorService tripEvaluatorService) {
         this.tripEvaluatorService = tripEvaluatorService;
     }
+    @GetMapping("/hello")
+    public ResponseEntity<String> getHelloWorld() {
+        return ResponseEntity.ok("Hello World");
+    }
     @GetMapping("/rec")
     public ResponseEntity<Review> makeExampleReview() {
         return ResponseEntity.ok(tripEvaluatorService.makeExampleReview());

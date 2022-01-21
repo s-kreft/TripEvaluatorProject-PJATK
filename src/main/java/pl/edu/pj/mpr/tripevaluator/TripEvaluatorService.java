@@ -49,6 +49,11 @@ public class TripEvaluatorService {
         repository.deleteById(id);
     }
 
+    public Trip getTripById(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(RuntimeException::new);
+    }
+
     public void addSuffixToTrip(Trip trip) {
         if (trip.getTitle() == null || trip.getTitle().isBlank()) {
             trip.setTitle("EMPTY");
@@ -81,5 +86,9 @@ public class TripEvaluatorService {
             return true;
         }
         return false;
+    }
+
+    public boolean existById(int id) {
+        return repository.existsById(id);
     }
 }
